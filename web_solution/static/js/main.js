@@ -1,0 +1,1 @@
+console.log("django web_solution")

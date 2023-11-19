@@ -1,0 +1,44 @@
+{% extends 'base_auth.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-md-center">
+    <div class="col-md-4">
+        <div class="card mt-5">
+            <div class="card-header">
+                <h4 class="text-center">Register for a new account</h4>
+            </div>
+            <div class="card-body">
+                <form action="{% url 'register' %}" method="post">
+                    {% csrf_token %}
+                    {% include "partials/messages.html" %}
+                    <div class="form-group py-2">
+                        <input type="text" name="username" id="userField" placeholder="Username" class="form-control form-control-sm" value="{{fieldValues.username}}">
+                    </div>
+                    <div class="invalid-feedback invalid_feedback_user" style="display: none;"></div>
+                    <p class="text-sm text-success usernameSuccess" style="display: none;"></p>
+                    <div class="form-group py-2">
+                        <input type="email" name="email" id="emailField" placeholder="Email" class="form-control form-control-sm" value="{{fieldValues.email}}">
+                    </div>
+                    <div class="invalid-feedback invalid_feedback_email" style="display: none;"></div>
+                    <p class="text-sm text-success emailSuccess" style="display: none;"></p>
+                    <div class="form-group py-2">
+                        <div class="input-group">
+                            <input type="password" name="password" id="passwordField" placeholder="Password" value="{{fieldValues.password}}" class="form-control form-control-sm">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <small class="float-right px-2 show">SHOW</small>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-top: 20px;"></div>
+                    <input type="submit" value="Register" class="btn btn-primary btn-block submit-btn" style="width: 100%;">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/register.js' %}"></script>
+{% endblock %}
